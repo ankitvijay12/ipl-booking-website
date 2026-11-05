@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL 2026 Ticket Booking</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        background-color: lightgray;
+        color: black;
+      }
+
+      /* Header & Navigation using basic color names */
+      header {
+        background: black;
+        color: white;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3px solid red;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+      }
+      nav a:hover {
+        color: red;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: black;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      /* Buttons using red and white */
+      .btn {
+        background: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 5px;
+        display: inline-block;
+        font-weight: bold;
+      }
+      .btn:hover {
+        background: darkred;
+      }
+
+      section {
+        padding: 40px 20px;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      /* Headings with red accent border */
+      h2 {
+        border-bottom: 3px solid red;
+        padding-bottom: 10px;
+        color: black;
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+      }
+      th,
+      td {
+        border: 1px solid gray;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: black;
+        color: white;
+      }
+
+      /* Form and Summary Grid */
+      .grid-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+      }
+      .form-card,
+      .summary-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px gray;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid gray;
+        border-radius: 4px;
+      }
+
+      /* Info Cards */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .info-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border-top: 4px solid red;
+      }
+
+      /* Footer */
+      footer {
+        background: black;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        border-top: 3px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <h2>IPL 2026</h2>
+      <nav>
+        <a href="#matches">Matches</a>
+        <a href="#book">Book Ticket</a>
+        <a href="#my-bookings">My Bookings</a>
+        <a href="#guidelines">Guidelines</a>
+      </nav>
+    </header>
+
+    <!-- Banner (Hero) Section -->
+    <section class="hero">
+      <h1>Experience The Stadium Energy Live!</h1>
+      <p>
+        Book your tickets now for IPL 2026 and witness your favorite teams
+        battle for glory.
+      </p>
+      <div>
+        <a href="#matches" class="btn">View Schedule</a>
+        <a href="#book" class="btn">Book Ticket</a>
+      </div>
+    </section>
+
+    <!-- About IPL 2026 Section -->
+    <section id="about" style="background: white">
+      <h2>About IPL 2026</h2>
+      <p>
+        The Indian Premier League (IPL) 2026 brings electrifying T20 cricket
+        action across India. Get ready for breathtaking catches, massive sixes,
+        and unforgettable rivalries.
+      </p>
+
+      <h3>Popular Teams</h3>
+      <ul>
+        <li>Mumbai Indians (MI)</li>
+        <li>Chennai Super Kings (CSK)</li>
+        <li>Royal Challengers Bengaluru (RCB)</li>
+        <li>Kolkata Knight Riders (KKR)</li>
+      </ul>
+
+      <h3>Major Match Venues</h3>
+      <ul>
+        <li>Wankhede Stadium, Mumbai</li>
+        <li>M. A. Chidambaram Stadium, Chennai</li>
+        <li>M. Chinnaswamy Stadium, Bengaluru</li>
+        <li>Eden Gardens, Kolkata</li>
+      </ul>
+    </section>
+
+    <!-- Match Schedule Section -->
+    <section id="matches">
+      <h2>Match Schedule & Tickets</h2>
+
+      <div style="margin-bottom: 15px">
+        <label for="team-filter"><strong>Filter by Team:</strong></label>
+        <select id="team-filter" style="padding: 6px; width: 200px">
+          <option value="all">All Teams</option>
+          <option value="csk-rcb">CSK vs RCB</option>
+          <option value="mi-kkr">MI vs KKR</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Match No</th>
+            <th>Teams</th>
+            <th>Date & Time</th>
+            <th>Venue</th>
+            <th>Ticket Prices (Gen / Prem / VIP)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>M01</td>
+            <td>CSK vs RCB</td>
+            <td>22 Mar 2026, 7:30 PM</td>
+            <td>M. A. Chidambaram Stadium, Chennai</td>
+            <td>₹800 / ₹2,500 / ₹6,000</td>
+            <td>
+              <a
+                href="#book"
+                class="btn"
+                style="padding: 5px 10px; font-size: 0.9rem"
+                >Book</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>M02</td>
+            <td>MI vs KKR</td>
+            <td>23 Mar 2026, 7:30 PM</td>
+            <td>Wankhede Stadium, Mumbai</td>
+            <td>₹750 / ₹2,200 / ₹5,500</td>
+            <td>
+              <a
+                href="#book"
+                class="btn"
+                style="padding: 5px 10px; font-size: 0.9rem"
+                >Book</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Ticket Booking Form & Summary Section -->
+    <section id="book">
+      <h2>Book Your Match Ticket</h2>
+      <div class="grid-container">
+        <div class="form-card">
+          <form>
+            <div class="form-group">
+              <label for="match-select">Select Match</label>
+              <select id="match-select">
+                <option>Match 01: CSK vs RCB</option>
+                <option>Match 02: MI vs KKR</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="stand-select">Stand Category</label>
+              <select id="stand-select">
+                <option>General (₹800)</option>
+                <option>Premium (₹2,500)</option>
+                <option>VIP (₹6,000)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="qty">Number of Tickets</label>
+              <input type="number" id="qty" min="1" max="10" value="1" />
+            </div>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="name@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="9876543210" />
+            </div>
+            <button type="submit" class="btn" style="width: 100%">
+              Confirm Booking
+            </button>
+          </form>
+        </div>
+
+        <div class="summary-card">
+          <h3>Booking Summary</h3>
+          <p>
+            <strong>Match:</strong>
+            <span id="sum-match">Match 01: CSK vs RCB</span>
+          </p>
+          <p><strong>Stand:</strong> <span id="sum-stand">General</span></p>
+          <p><strong>Price per Ticket:</strong> ₹800</p>
+          <p><strong>Quantity:</strong> <span id="sum-qty">1</span></p>
+          <hr />
+          <p>
+            <strong>Total Amount:</strong>
+            <span
+              id="sum-total"
+              style="color: red; font-size: 1.2rem; font-weight: bold"
+              >₹800</span
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Ticket Bookings Section -->
+    <section id="my-bookings" style="background: white">
+      <h2>My Ticket Bookings</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Match</th>
+            <th>Stand</th>
+            <th>Qty</th>
+            <th>Total Paid</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6" style="text-align: center; color: gray">
+              No bookings found. Book a match to see records here!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Guidelines Section -->
+    <section id="guidelines">
+      <h2>Stadium Guidelines</h2>
+      <div class="cards-grid">
+        <div class="info-card">
+          <h3>Ticket Verification</h3>
+          <p>
+            E-tickets or physical printed tickets must include a valid QR code.
+            Screenshots of passes will not be accepted at entry gates.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>ID Proof Requirement</h3>
+          <p>
+            A government-issued photo ID (Aadhaar Card, Driver's License, or
+            Passport) must match the ticket holder's name for entry
+            verification.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Prohibited Items</h3>
+          <p>
+            Outside food, beverages, laptops, helmets, glass bottles, power
+            banks, and sharp objects are strictly prohibited inside the stadium
+            premises.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 IPL Ticket Booking Portal. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
