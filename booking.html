@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>IPL Ticket Booking Form</h2>
+    <a href="index.html">&larr; Back to Home</a>
+    <br /><br />
+
+    <form action="#" method="POST">
+      <!-- Name -->
+      <p>
+        <label>Full Name:</label><br />
+        <input type="text" name="name" required minlength="3" />
+      </p>
+
+      <!-- Email -->
+      <p>
+        <label>Email Address:</label><br />
+        <input type="email" name="email" required />
+      </p>
+
+      <!-- Phone -->
+      <p>
+        <label>Phone Number:</label><br />
+        <input
+          type="tel"
+          name="phone"
+          pattern="[0-9]{10}"
+          placeholder="10-digit number"
+          required
+        />
+      </p>
+
+      <!-- Match Dropdown -->
+      <p>
+        <label>Select Match:</label><br />
+        <select name="match" required>
+          <option value="" disabled selected>-- Choose Match --</option>
+          <option value="csk_mi">CSK vs MI</option>
+          <option value="rcb_kkr">RCB vs KKR</option>
+        </select>
+      </p>
+
+      <!-- Stand Dropdown -->
+      <p>
+        <label>Stand Category:</label><br />
+        <select name="stand" required>
+          <option value="" disabled selected>-- Choose Stand --</option>
+          <option value="vip">VIP Stand</option>
+          <option value="general">General Stand</option>
+        </select>
+      </p>
+
+      <!-- Tickets -->
+      <p>
+        <label>Number of Tickets (1-5):</label><br />
+        <input
+          type="number"
+          name="tickets"
+          min="1"
+          max="5"
+          value="1"
+          required
+        />
+      </p>
+
+      <!-- Buttons -->
+      <p>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </p>
+    </form>
+  </body>
+</html>
