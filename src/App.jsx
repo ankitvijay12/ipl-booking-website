@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Navbar } from "./components/Navbar.jsx";
 import { MatchCard } from "./components/MatchCard.jsx";
 import { BookingForm } from "./components/BookingForm.jsx";
@@ -56,6 +56,26 @@ const MATCHES = [
 export default function App() {
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [bookings, setBookings] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null); // State for toast notification
+
+  // Reference for smooth scrolling to the booking section
+  const bookingRef = useRef(null);
+
+  // Helper function to show and auto-hide toast notifications
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3000); // Hide after 3 seconds
+  };
+
+  const handleSelectMatch = (m) => {
+    setSelectedMatch(m);
+    // Smooth scroll down to the booking form section when Book is clicked
+    if (bookingRef.current) {
+      bookingRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleBooking = (booking) => {
     // 1. Subtract booked seats
@@ -64,8 +84,9 @@ export default function App() {
     // 2. Add new booking to list
     setBookings(bookings.concat(booking));
 
-    // 3. Close the popup
+    // 3. Close the popup and trigger success toast notification
     setSelectedMatch(null);
+    showToast("🎉 Booking confirmed successfully!");
   };
 
   return (
@@ -79,19 +100,25 @@ export default function App() {
             <MatchCard
               key={match.id}
               match={match}
-              onSelectMatch={(m) => setSelectedMatch(m)}
+              onSelectMatch={handleSelectMatch}
             />
           ))}
         </div>
       </main>
 
-      {selectedMatch && (
-        <BookingForm
-          match={selectedMatch}
-          onClose={() => setSelectedMatch(null)}
-          onSubmit={handleBooking}
-        />
-      )}
+      {/* Attach reference here so the page smoothly scrolls to this wrapper */}
+      <div ref={bookingRef}>
+        {selectedMatch && (
+          <BookingForm
+            match={selectedMatch}
+            onClose={() => setSelectedMatch(null)}
+            onSubmit={handleBooking}
+          />
+        )}
+      </div>
+
+      {/* Toast Notification Popup */}
+      {toastMessage && <div className="toast-notification">{toastMessage}</div>}
 
       <Footer />
     </div>
