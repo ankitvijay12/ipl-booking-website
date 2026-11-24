@@ -1,3 +1,4 @@
+// --- Activity 7: Live Booking Summary (for booking.html) ---
 const matchSelect = document.getElementById("match-select");
 const standSelect = document.querySelector("#stand-select");
 const qtyInput = document.querySelector("#ticket-qty");
@@ -63,6 +64,49 @@ if (matchSelect && standSelect && qtyInput) {
   matchSelect.addEventListener("change", () => updateSummary(true));
   standSelect.addEventListener("change", () => updateSummary(true));
   qtyInput.addEventListener("change", () => updateSummary(true));
-
   updateSummary(false);
+}
+
+// --- Activity 8: Team Filter, Grid/List View Toggle & Mobile Menu ---
+const teamFilter = document.getElementById("team-filter");
+const viewToggleBtn = document.getElementById("view-toggle-btn");
+const matchesGrid = document.getElementById("matches-grid");
+const matchCards = document.querySelectorAll(".match-card");
+
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const mainNav = document.getElementById("main-nav");
+
+if (teamFilter && matchCards.length > 0) {
+  teamFilter.addEventListener("change", () => {
+    const selectedTeam = teamFilter.value;
+
+    matchCards.forEach((card) => {
+      const teams = (card.dataset.teams || "").split(" ");
+      const shouldShow = selectedTeam === "ALL" || teams.includes(selectedTeam);
+      card.style.display = shouldShow ? "" : "none";
+    });
+
+    showToast(
+      selectedTeam === "ALL"
+        ? "Showing all scheduled matches"
+        : `Filtered matches for ${selectedTeam}`,
+    );
+  });
+}
+
+if (viewToggleBtn && matchesGrid) {
+  viewToggleBtn.addEventListener("click", () => {
+    const isListView = matchesGrid.classList.toggle("list-view");
+    viewToggleBtn.textContent = isListView
+      ? "Switch to Grid View"
+      : "Switch to List View";
+    showToast(isListView ? "Switched to List View" : "Switched to Grid View");
+  });
+}
+
+if (hamburgerBtn && mainNav) {
+  hamburgerBtn.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("open");
+    hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+  });
 }

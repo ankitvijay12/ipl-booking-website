@@ -1,10 +1,5 @@
-/* Define CSS Variables for the Theme */
-:root {
-  --primary-color: black;
-  --accent-color: red;
-  --bg-color: lightgray;
-  --text-color: black;
-  --white-color: white;
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -12,81 +7,250 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: #f4f4f4;
+  color: #111111;
 }
 
-/* Header & Navigation */
-header {
-  background: var(--primary-color);
-  color: var(--white-color);
-  padding: 1rem 2rem;
+/* Flexbox Navbar */
+.site-header {
+  background-color: #111111;
+  color: #ffffff;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.nav-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid var(--accent-color);
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-nav a {
-  color: var(--white-color);
+.logo {
+  color: #ef1b2d;
+  font-size: 1.35rem;
+  font-weight: bold;
   text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
 }
 
-nav a:hover {
-  color: var(--accent-color);
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-/* Form Container Styles for booking.html */
-.container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: var(--white-color);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-h2 {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 8px;
+.nav-links a:hover {
+  color: #ef1b2d;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #555555;
   border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: var(--accent-color);
-  color: var(--white-color);
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 0.35rem 0.65rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  border-radius: 4px;
 }
 
-button:hover {
-  opacity: 0.9;
+/* Main Container & Hero */
+.page-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.hero {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left: 5px solid #ef1b2d;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.cta-btn,
+.card-link,
+.toggle-btn {
+  display: inline-block;
+  background-color: #ef1b2d;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.cta-btn:hover,
+.card-link:hover,
+.toggle-btn:hover {
+  background-color: #c91423;
+}
+
+/* Matches Header & Controls */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.section-header h2,
+.guidelines-section h2 {
+  margin: 0;
+}
+
+.controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.controls-bar select {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+/* CSS Grid Match Cards */
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.matches-grid.list-view {
+  grid-template-columns: 1fr;
+}
+
+.matches-grid.list-view .match-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.match-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 1.15rem;
+}
+
+.match-card h3 {
+  margin: 0 0 0.4rem;
+}
+
+.match-card .venue,
+.match-card .meta {
+  margin: 0.25rem 0;
+  color: #444444;
+}
+
+.match-card .card-link {
+  margin-top: 0.75rem;
+}
+
+/* CSS Grid 3-Column Guidelines */
+.guidelines-section h2 {
+  margin-bottom: 1rem;
+}
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.guideline-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 1.15rem;
+}
+
+.guideline-card h3 {
+  margin-top: 0;
+}
+
+/* Activity 7 Summary & Toast */
+.summary-card {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* Tablet & Mobile Responsive Stacking */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .matches-grid,
+  .matches-grid.list-view,
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .matches-grid.list-view .match-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
